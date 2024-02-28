@@ -1,9 +1,11 @@
 package view;
 
 import java.awt.Color;
+import java.util.List;
 import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import javax.swing.table.DefaultTableModel;
+import model.Person;
 
 public class PanelList extends JPanel {
     
@@ -16,7 +18,7 @@ public class PanelList extends JPanel {
         border.setTitleColor(Color.BLACK);
         setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
         
-        String[] columns = {"Name", "Surname", "Program"};
+        String[] columns = {"UserName", "Name", "Surname"};
         tableModel = new DefaultTableModel(columns, 0);
 
         table = new JTable(tableModel);
@@ -30,6 +32,14 @@ public class PanelList extends JPanel {
 
     public void clearData() {
         tableModel.setRowCount(0);
+    }
+
+    public void loadData(List<Person> personList) {
+    clearData();
+    for (Person person : personList) {
+        addPersonToTable(person.getUserName(), person.getName(), person.getSurname());
+    }
+    updateView();
     }
     
     public void updateView() {

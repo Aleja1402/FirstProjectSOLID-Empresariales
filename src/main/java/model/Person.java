@@ -207,6 +207,10 @@ public class Person implements IPerson {
         System.out.println("-----E-----");
     }
 
+    public List<Person> getPeopleListReturn() {
+        return peopleList;
+    }
+    
     public void removePersonByUserName(String userName) {
         Person wanted = null;
         for (Person person : peopleList) {

@@ -4,6 +4,7 @@ import controller.Controller;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -11,6 +12,7 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
+import model.Person;
 
 public class GUIPrincipal extends JFrame {
 
@@ -92,6 +94,10 @@ public class GUIPrincipal extends JFrame {
 
     void listToController() {
         controller.handleRead();
+    }
+    
+    List<Person> listToControllerReturn() {
+        return controller.handleReadM();
     }
 
     void updateToController(String name, String surname, String program) {

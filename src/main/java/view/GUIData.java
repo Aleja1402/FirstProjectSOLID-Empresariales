@@ -4,12 +4,14 @@ import java.awt.BorderLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.List;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JPanel;
 import static javax.swing.WindowConstants.EXIT_ON_CLOSE;
+import model.Person;
 
 public class GUIData extends JFrame implements ActionListener {
 
@@ -84,14 +86,18 @@ public class GUIData extends JFrame implements ActionListener {
             panelList.updateView();
         } else if (e.getSource() == btnRead) {
             parent.listToController();
-            panelList.updateView();
+            List<Person> listObjects = parent.listToControllerReturn();
+            panelList.loadData(listObjects);
         } else if (e.getSource() == btnUpdate) {
             parent.updateToController(txtUserName.getText(), txtName.getText(), txtSurname.getText());
-            panelList.updateView();
+            List<Person> listObjects = parent.listToControllerReturn();
+            panelList.loadData(listObjects);
+            //panelList.loadData();
         } else if (e.getSource() == btnDelete) {
             parent.deleteToController(txtUserName.getText());
             panelList.deleteSelectedRow();
-            panelList.updateView();            
+            List<Person> listObjects = parent.listToControllerReturn();
+            panelList.loadData(listObjects);            
         }
     }
 

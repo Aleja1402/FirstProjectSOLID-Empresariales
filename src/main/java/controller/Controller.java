@@ -1,10 +1,12 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import model.Person;
 import view.GUIPrincipal;
 
 public class Controller implements IController {
+
     private GUIPrincipal ppal;
     private Person person;
 
@@ -27,6 +29,11 @@ public class Controller implements IController {
         person.getPeopleList();   
     }
 
+    @Override
+    public List<Person> handleReadM() {   
+        return person.getPeopleListReturn();   
+    }
+    
     public void handleUpdate(String userName, String name, String surname) {
         Person wanted = person.findPersonByUserName(userName);
         if (wanted != null) {
